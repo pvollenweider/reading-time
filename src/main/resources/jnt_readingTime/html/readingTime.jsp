@@ -31,8 +31,10 @@
 
 <div id="eta-${currentNode.identifier}" class="eta"></div>
 <script>
-	$('${readingtime}').readingTime({
-        lang: '${lang}',
-		remoteTarget : '#eta-${currentNode.identifier}'
-	});
+    $(document).ready(function () {
+        $('${readingtime}').readingTime({
+            lang: '${lang}',
+            remoteTarget: '#eta-${currentNode.identifier}'
+        });
+    });
 </script>
