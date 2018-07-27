@@ -21,10 +21,10 @@ public class ReadingTimeFilter extends AbstractFilter {
         final JCRNodeWrapper node = resource.getNode();
         final PropertyIterator references = node.getWeakReferences("j:bindedComponent");
         while (references.hasNext()) {
-            final Node summary = references.nextProperty().getParent();
-            if (summary.isNodeType("jnt:readingTime")) {
-                logger.debug("Add toc div for " + summary.getPath());
-                return String.format("<div id=\"readingtime_%s\">%s</div>", summary.getIdentifier(), previousOut);
+            final Node pickedNode = references.nextProperty().getParent();
+            if (pickedNode.isNodeType("jnt:readingTime")) {
+                logger.debug("Add reading time div for " + pickedNode.getPath());
+                return String.format("<div id=\"readingtime_%s\">%s</div>", pickedNode.getIdentifier(), previousOut);
             }
         }
         return super.execute(previousOut, renderContext, resource, chain);
